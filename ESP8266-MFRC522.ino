@@ -1,3 +1,7 @@
+/*
+Many thanks to nikxha from the ESP8266 forum
+*/
+
 #include <ESP8266WiFi.h>
 #include <SPI.h>
 #include "MFRC522.h"
