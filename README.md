@@ -13,6 +13,16 @@ You have to install the Arduino IDE 1.6.4.
 * [RFID library by Miguel Balboa](https://github.com/miguelbalboa/rfid)
 
 ## Wiring RFID RC522 module
+I have to update the picture. It seems that not all ESP boards working with wiring on picture.
+In this case - please use following wiring:
+```
+MISO - GPIO12 (hw spi)
+MOSI - GPIO13 (hw spi)
+SCK  - GPIO14 (hw spi)
+SS   - GPIO04 (free GPIO)
+RST  - GPIO05 (free GPIO)
+```
+
 ![wiring diagram](MFRC522-ESP8266_wiring.png "wiring diagram")
 
 ## define RFID module
