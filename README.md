@@ -23,8 +23,6 @@ SS   - GPIO04 (free GPIO)
 RST  - GPIO05 (free GPIO)
 ```
 
-![wiring diagram](MFRC522-ESP8266_wiring.png "wiring diagram")
-
 ## define RFID module
 ```c
 #include "MFRC522.h"
