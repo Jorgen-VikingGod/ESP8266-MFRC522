@@ -28,8 +28,8 @@ RST  - GPIO05 (free GPIO)
 ## define RFID module
 ```c
 #include "MFRC522.h"
-#define RST_PIN	15 // RST-PIN for RC522 - RFID - SPI - Modul GPIO15 
-#define SS_PIN	2  // SDA-PIN for RC522 - RFID - SPI - Modul GPIO2 
+#define RST_PIN	5 // RST-PIN for RC522 - RFID - SPI - Modul GPIO5 
+#define SS_PIN	4 // SDA-PIN for RC522 - RFID - SPI - Modul GPIO4 
 MFRC522 mfrc522(SS_PIN, RST_PIN);	// Create MFRC522 instance
 ```
 
