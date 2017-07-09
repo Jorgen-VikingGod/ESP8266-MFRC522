@@ -4,35 +4,43 @@ MFRC522 RFID module connected to ESP8266 (ESP-12) WiFi module
 Many thanks to nikxha from the ESP8266 forum
 
 ## Requirements
-You have to install the Arduino IDE 1.6.4.
+You have to install Arduino IDE 1.6.10 or later. Links are listed below.
 * **Arduino** > **Preferences** > "Additional Boards Manager URLs:" and add: **http://arduino.esp8266.com/stable/package_esp8266com_index.json**
 * **Arduino** > **Tools** > **Board** > **Boards Manager** > type in **ESP8266** and install the board
-* download MFRC522 module (see [Libraries](#libraries)) and copy folder to Arduino library path
+* Download MFRC522 library and extract to Arduino library folder or you can use "Library Manager" on the IDE itself to install the MFRC522 library.
 
-## Libraries
-* [RFID library by Miguel Balboa](https://github.com/miguelbalboa/rfid)
+### Download Links
+* [Arduino IDE](https://www.arduino.cc/en/Main/Software) - The development IDE
+* [ESP8266 Core for Arduino IDE](https://github.com/esp8266/Arduino) - ESP8266 Core
+* [MFRC522 Library](https://github.com/miguelbalboa/rfid) - MFRC522 RFID Library
 
-## Wiring RFID RC522 module
-I have to update the picture. It seems that not all ESP boards working with wiring on picture.
-In this case - please use following wiring:
-```
-MISO - GPIO12 (hw spi)
-MOSI - GPIO13 (hw spi)
-SCK  - GPIO14 (hw spi)
-SS   - GPIO04 (free GPIO)
-RST  - GPIO05 (free GPIO)
-```
+## Simple Example
 
-## define RFID module
-```c
+### Wiring RFID RC522 module
+The following table shows the typical pin layout used:
+
+| Signal        | MFRC522       | WeMos D1 mini  | NodeMcu | Generic      |
+|---------------|:-------------:|:--------------:| :------:|:------------:|
+| RST/Reset     | RST           | D3 [1]         | D3 [1]  | GPIO-0 [1]   |
+| SPI SS        | SDA [3]       | D8 [2]         | D8 [2]  | GPIO-15 [2]  |
+| SPI MOSI      | MOSI          | D7             | D7      | GPIO-13      |
+| SPI MISO      | MISO          | D6             | D6      | GPIO-12      |
+| SPI SCK       | SCK           | D5             | D5      | GPIO-14      |
+
+* [1] (1, 2) Configurable, typically defined as RST_PIN in sketch/program.
+* [2]	(1, 2) Configurable, typically defined as SS_PIN in sketch/program.
+* [3]	The SDA pin might be labeled SS on some/older MFRC522 boards
+
+### Define RFID module
+```arduino
 #include "MFRC522.h"
 #define RST_PIN	5 // RST-PIN for RC522 - RFID - SPI - Modul GPIO5 
 #define SS_PIN	4 // SDA-PIN for RC522 - RFID - SPI - Modul GPIO4 
 MFRC522 mfrc522(SS_PIN, RST_PIN);	// Create MFRC522 instance
 ```
 
-## Initialize RFID module
-```c
+### Initialize RFID module
+```arduino
 void setup() {
   Serial.begin(9600);    // Initialize serial communications
   SPI.begin();	         // Init SPI bus
@@ -40,8 +48,8 @@ void setup() {
 }
 ```
 
-## Read RFID tag
-```c
+### Read RFID tag
+```arduino
 void loop() { 
   // Look for new cards
   if ( ! mfrc522.PICC_IsNewCardPresent()) {
@@ -67,3 +75,7 @@ void dump_byte_array(byte *buffer, byte bufferSize) {
   }
 }
 ```
+
+## More Examples
+* [ESP RFID](https://github.com/omersiar/esp-rfid) - Embedded RFID Access Control Project for MFRC522
+* [Paralelni Polis RFID Access System](https://github.com/ParalelniPolis/rfid-locks) - Access Control with Server - Client communication.
