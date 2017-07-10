@@ -1,7 +1,7 @@
 # ESP8266-MFRC522
 MFRC522 RFID module connected to ESP8266 (ESP-12) WiFi module
 
-Many thanks to nikxha from the ESP8266 forum
+Many thanks to nikxha from the ESP8266 forum (for initial work) and [omersiar](https://github.com/omersiar) (for more details of wiring and additional examples)
 
 ## Requirements
 You have to install Arduino IDE 1.6.10 or later. Links are listed below.
