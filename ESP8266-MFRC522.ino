@@ -25,7 +25,7 @@ const char *pass =	"yourPASSWORD";	// change according to your Network
 MFRC522 mfrc522(SS_PIN, RST_PIN);	// Create MFRC522 instance
 
 void setup() {
-  Serial.begin(9600);    // Initialize serial communications
+  Serial.begin(115200);    // Initialize serial communications
   delay(250);
   Serial.println(F("Booting...."));
   
