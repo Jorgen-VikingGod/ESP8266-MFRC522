@@ -42,7 +42,7 @@ MFRC522 mfrc522(SS_PIN, RST_PIN);	// Create MFRC522 instance
 ### Initialize RFID module
 ```arduino
 void setup() {
-  Serial.begin(9600);    // Initialize serial communications
+  Serial.begin(115200);    // Initialize serial communications
   SPI.begin();	         // Init SPI bus
   mfrc522.PCD_Init();    // Init MFRC522
 }
